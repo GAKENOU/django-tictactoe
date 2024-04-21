@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="wrapper">
+        <h1>Welcome to Tic Tac Toe Game</h1>
+
+        <form 
+            action="/tictactoe/play/"  
+            method="POST"
+        >
+            {% csrf_token %}
+            <div class="form-control">
+                <label for="">Enter room code</label>
+                <input 
+                    type="text"
+                    name="game_code"
+                >
+            </div>
+
+            <div class="form-control">
+                <label for="">Episode</label>
+                <input 
+                    type="text"
+                    name="nb_round"
+                >
+            </div>
+
+            <div class="form-control">
+                <label for="character_choice">Your character</label>
+                <select 
+                    name="character_choice" 
+                    id="character_choice"
+                >
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                </select>
+            </div>
+
+            <input type="submit" class="button" value="Start game">
+        </form>
+    </div>
+{% endblock content %}
