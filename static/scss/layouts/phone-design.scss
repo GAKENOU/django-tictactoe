@@ -1,0 +1,61 @@
+.bezel {
+    border-radius: 55.33px;
+    height: 700px;
+    padding: 4px;
+    width: 400px;
+
+    .inner-bezel {
+        background-color: $color-neutral-900;
+        border: 1px solid $color-neutral-50;
+        border-radius: 55.33px;
+        height: 100%;
+        padding: 80px 10px;
+        width: 100%;
+
+        .screen {
+            background-color: $color-neutral-50;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &--key {
+        background-color: $color-black;
+        height: 40px;
+        width: 2px;
+    }
+    
+    .power {
+        @extend .bezel--key;
+        right: -19px;
+        top: 130px;
+    }
+
+    .up-volume {
+        @extend .bezel--key;
+        left: 3px;
+        top: 130px;
+    }
+
+    .down-volume {
+        @extend .bezel--key;
+        left: 3px;
+        top: 180px;
+    }
+
+    .home {
+        align-items: center;
+        bottom: -170px;
+        display: flex;
+        height: 84px;
+        justify-content: center;
+        width: 100%;
+
+        &-key {
+            border: 1px solid $color-neutral-50;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+    }
+}

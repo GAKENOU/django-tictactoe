@@ -1,41 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="wrapper">
-        <h1>Welcome to Tic Tac Toe Game</h1>
-
+    <div class="container pdlr-2">
         <form 
             action="/tictactoe/play/"  
             method="POST"
+            class="pdlr-4"
         >
             {% csrf_token %}
-            <div class="form-control">
-                <label for="">Enter room code</label>
-                <input 
-                    type="text"
-                    name="game_code"
-                >
-            </div>
 
-            <div class="form-control">
-                <label for="">Episode</label>
+            <div class="mb-3">
+                <label for="" class="font-24">Nombre de tour</label>
                 <input 
-                    type="text"
+                    type="number"
                     name="nb_round"
+                    class="input-primary input-tx"
+                    min="1"
+                    max="5"
+                    required
                 >
             </div>
 
-            <div class="form-control">
-                <label for="character_choice">Your character</label>
+            <div class="mb-3">
+                <label for="" class="font-24">Symbole</label>
                 <select 
                     name="character_choice" 
                     id="character_choice"
+                    class="input-primary select-input"
+                    required
                 >
                     <option value="X">X</option>
                     <option value="O">O</option>
                 </select>
             </div>
 
-            <input type="submit" class="button" value="Start game">
+            <input 
+                type="hidden"
+                name="game_code"
+                value="GT0001"
+            >
+
+            <div class="algn-center w-100">
+                <input type="submit" class="button" value="Démarrer">
+            </div>
+            
         </form>
     </div>
 {% endblock content %}

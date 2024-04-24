@@ -1,0 +1,39 @@
+:root,
+.theme-01 {
+    // ---- NEUTRAL  ----
+    $neutral: (
+        "50": #fff, "100": #f5f5f5, "200": #e5e5e5, "300": #d4d4d4,
+        "400": #a3a3a3, "500": #737373, "600": #525252, "700": #404040,
+        "800": #262626, "900": #0a0a0a
+    );
+    @each $clr, $hex in $neutral {
+        --clr-neutral-#{$clr}: #{$hex};
+    }
+}
+
+:root,
+.theme-02 {
+    // ---- NEUTRAL  ----
+    $neutral: (
+        "50": #0a0a0a, "100": #262626, "200": #404040, "300": #525252,
+        "400": #737373, "500": #a3a3a3, "600": #d4d4d4, "700": #e5e5e5,
+        "800": #f5f5f5, "900": #fff
+    );
+    @each $clr, $hex in $neutral {
+        --clr-neutral-#{$clr}: #{$hex};
+    }
+}
+
+// NEUTRAL
+$color-black: #0a0a0a;
+$color-white: #fff;
+$color-neutral-50: var(--clr-neutral-50);
+$color-neutral-100: var(--clr-neutral-100);
+$color-neutral-200: var(--clr-neutral-200);
+$color-neutral-300: var(--clr-neutral-300);
+$color-neutral-400: var(--clr-neutral-400);
+$color-neutral-500: var(--clr-neutral-500);
+$color-neutral-600: var(--clr-neutral-600);
+$color-neutral-700: var(--clr-neutral-700);
+$color-neutral-800: var(--clr-neutral-800);
+$color-neutral-900: var(--clr-neutral-900);

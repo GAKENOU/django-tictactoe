@@ -8,6 +8,11 @@ if (inner_curr_round) {
     inner_curr_round.innerHTML = curr_round
 }
 
+inner_player2 = document.getElementById("player2")
+if (inner_player2) {
+    inner_player2.innerHTML = (char_choice == 'X')?'O':'X'
+}
+
 
 let connection_string = 'ws://'+window.location.host+'/tictactoe/play'
 // let game_socket = new WebSocket(connection_string)
@@ -135,7 +140,7 @@ function checkifPlayerWins() {
             }
         });
     }
-    console.log("Is win: ",win);
+    console.log("Is A winner: ",win);
     return win
 }
 

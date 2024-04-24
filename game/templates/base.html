@@ -6,12 +6,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
     <title>Tic Tac Toe</title>
 </head>
-<body>
-    {% block content %}
-    {% endblock content %}
+<body class="theme-01">
+    <div class="game-container">
+        <div class="w-100 algn-center">
+            <h1 class="font-40">Bienvenue au Jeu TicTacToe</h1>
+        </div>
+
+        <div class="bezel p-relative">
+            <div class="inner-bezel">
+                <div class="screen">
+                    <div 
+                        class="cover"
+                    >
+                        <div className="glass-overlay">
+                            {% block content %}
+                            {% endblock content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="power p-absolute"></div>
+            <div class="up-volume p-absolute"></div>
+            <div class="down-volume p-absolute"></div>
+            <div class="home p-absolute">
+                <div class="home-key"></div>
+            </div>
+        </div>
+    </div>
+    
+    
 
     <script src="{% static 'js/game.js' %}"></script>
     {% block javascript %}
