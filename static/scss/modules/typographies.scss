@@ -19,6 +19,24 @@ body {
     }
 }
 
+.text {
+    &-warning {
+        color: #946f00;
+    }
+
+    &-danger {
+        color: #dc3545;
+    }
+}
+
+.curs-p {
+    cursor: pointer;
+}
+
+.is-hidden {
+    display: none;
+}
+
 .algn-center {
     text-align: center!important;
 }
@@ -92,4 +110,68 @@ body {
 
 .text-neutral {
     color: $color-neutral-50;
+}
+
+.h-8p {
+    height: 8px!important;
+}
+
+.h-10p {
+    height: 10px!important;
+}
+
+.h-13p {
+    height: 13px!important;
+}
+
+.h-14p {
+    height: 14px!important;
+}
+
+.h-15p {
+    height: 15px!important;
+}
+
+.h-16p {
+    height: 16px!important;
+}
+
+.h-18p {
+    height: 18px!important;
+}
+
+.h-20p {
+    height: 20px!important;
+}
+
+.h-24p {
+    height: 24px!important;
+}
+
+.h-30p {
+    height: 30px;
+}
+
+.h-44p {
+    height: 44px;
+}
+
+.h-49p {
+    height: 49px;
+}
+
+.h-50p {
+    height: 50px!important;
+}
+
+.h-100p {
+    height: 100px!important;
+}
+
+p {
+    text-align: justify!important;
+}
+
+a {
+    text-decoration: none;
 }

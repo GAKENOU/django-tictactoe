@@ -1,0 +1,95 @@
+@font-face {
+    font-family: $font-family ;
+    src: url(sen/Sen-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family: Calibri!important
+}
+
+@each $size in $sizes {
+    .font-#{$size} {
+        font-size: #{$size}px;
+    }
+}
+
+@each $wgh-size in $fnt-wgh-sizes {
+    .font-wgh-#{$wgh-size} {
+        font-weight: #{$wgh-size}!important;
+    }
+}
+
+.algn-center {
+    text-align: center!important;
+}
+
+.algn-right {
+    text-align: right!important;
+}
+
+.algn-left {
+    text-align: left!important;
+}
+
+.mt {
+    &-x {
+        margin-top: unset!important;
+    }
+    @each $spacing in $spacing {
+        &-#{$spacing} {
+            margin-top: $spacing * 1%;
+        }
+    }
+}
+
+.mb {
+    &-x {
+        margin-bottom: unset!important;
+    }
+    @each $spacing in $spacing {
+        &-#{$spacing} {
+            margin-bottom: $spacing * 1%;
+        }
+    }
+}
+
+.pdl {
+    &-x {
+        padding-left: unset!important;
+    }
+    @each $spacing in $spacing {
+        &-#{$spacing} {
+            padding-left: $spacing * 1%;
+        }
+    }
+}
+
+.pdlr {
+    &-x {
+        padding-left: unset!important;
+        padding-right: unset!important;
+    }
+    @each $spacing in $spacing {
+        &-#{$spacing} {
+            padding-left: $spacing * 1%;
+            padding-right: $spacing * 1%;
+        }
+    }
+}
+
+.pdtb {
+    @each $spacing in $spacing {
+        &-#{$spacing} {
+            padding-top: $spacing * 1%;
+            padding-bottom: $spacing * 1%;
+        }
+    }
+    &-x {
+        padding-top: unset!important;
+        padding-bottom: unset!important;
+    }
+}
+
+.text-neutral {
+    color: $color-neutral-50;
+}

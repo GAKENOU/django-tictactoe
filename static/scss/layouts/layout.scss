@@ -9,8 +9,57 @@
     }
 }
 
+ul {
+    margin: 0;
+}
+
 .w-100 {
     width: 100%;
+}
+
+.instruct_1 {
+    position: absolute;
+    right: -450px;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 0px 12px 2px rgb(239 117 11 / 75%);
+    width: 400px;
+    padding: 0 1em;
+
+    p {
+        font-size: 18px;
+    }
+
+    img {
+        width: 30px;
+    }
+}
+
+@keyframes MoveUpDown {
+    0%, 100% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: 100px;
+    }
+}
+
+.indiq {
+    position: absolute;
+    width: 400px;
+    padding: 0 1em;
+    top: 60%;
+    right: -450px;
+
+    i {
+        animation: MoveUpDown 1s linear infinite;
+        position: absolute;
+        left: 38%
+    }
+
+    
 }
 
 .game-container {
@@ -28,7 +77,7 @@
 }
 
 .container {
-    padding: 3rem 0;
+    padding: 2rem 0;
     color: #fff;
     width: 100%;
 
@@ -106,18 +155,102 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
             
             .square-row {
                 display: flex;
-                column-gap: 0.2em;
-                margin-bottom: 0.2em;
+                column-gap: 2px;
+                margin-bottom: 2px;
             }
+
+            .win-line {
+                position: absolute;
+                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,95,21,1) 68%, rgba(240,172,141,1) 100%);
+                background-size: 200% 100%;
+
+                -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px 4px rgb(239 117 11 / 75%);
+
+                &-678 {
+                    bottom: calc(104px / 2);
+                    width: calc(104px * 3 + 4px);
+                    height: 3px;
+                    background-position: right bottom;
+                    transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+                }
+
+                &-345 {
+                    bottom: calc(104px + 104px / 2);
+                    width: calc(104px * 3 + 4px);
+                    height: 3px;
+                    background-position: right bottom;
+                    transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+                }
+
+                &-012 {
+                    top: calc(104px / 2);
+                    width: calc(104px * 3 + 4px);
+                    height: 3px;
+                    background-position: right bottom;
+                    transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+                }
+
+                &-036 {
+                    top: 0;
+                    left: calc(104px / 2 + 42px);
+                    height: calc(104px * 3 + 4px);
+                    width: 3px;
+                    background-position: right bottom;
+                    transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+                }
+
+                &-147 {
+                    top: 0;
+                    left: calc(104px + 104px / 2 + 42px);
+                    height: calc(104px * 3 + 4px);
+                    width: 3px;
+                    background-position: right bottom;
+                    transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+                }
+
+                &-258 {
+                    top: 0;
+                    right: calc(104px / 2 + 42px);
+                    height: calc(104px * 3 + 4px);
+                    width: 3px;
+                    background-position: right bottom;
+                    transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+                }
+
+                &-246 {
+                    top: -62px;
+                    right: 200px;
+                    width: 3px;
+                    height: calc(104px * 3 * sqrt(2));
+                    rotate: 45deg;
+                    background-position: right bottom;
+                    transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+                }
+
+                &-048 {
+                    top: -62px;
+                    left: 200px;
+                    width: 3px;
+                    height: calc(104px * 3 * sqrt(2));
+                    rotate: -45deg;
+                    background-position: right bottom;
+                    transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+                }
+            }
+
+            
         }
         
         .square{
             background: #fff;
-            width: 3em;
-            height: 3em;
+            width: 104px;
+            height: 104px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -134,6 +267,26 @@
     }
 }
 
+.winner_1, .winner_2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 30%;
+
+    img {
+        width: 100%;
+    }
+}
+
+.winner_1  {
+    left: -75%;
+}
+
+.winner_2  {
+    left: 130%;
+}
+
+
 .player_1, .player_2 {
     position: absolute;
     width: 300px;
@@ -144,9 +297,23 @@
         font-size: 30px;
         color: #521d03;
     }
+
+    &.active {
+        color: #fff!important;
+        display: block;
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,95,21,1) 68%, rgba(240,172,141,1) 100%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all 1s ease-out;
+
+        h2 {
+            color: #fff;
+        }
+    }
 }
 
-.player_1 {
+.player_1{
     left: -90%;
 }
 
@@ -154,3 +321,47 @@
     left: 115%;
 }
 
+.apps {
+    display: flex;
+    column-gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1em;
+
+    a {
+        text-decoration: none;
+    }
+
+    .icon {
+        width: calc(100% / 5 - 1em);
+        height: 59px;
+        margin-bottom: 1.5em;
+        border-radius: 9px;
+        text-align: center;
+        position: relative;
+        background-color: #fff;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 9px;
+        }
+
+        .app-label {
+            font-size: 10px;
+            color: #fff;
+            text-decoration: none;
+            position: absolute;
+            bottom: -16px;
+            width: 100%;
+            left: 0;
+        }
+
+        // .tictoe {
+        //     background: url("/static/images/icons/tictactoe.png") no-repeat;
+        //     background-position: center;
+        //     background-size: cover;
+        //     width: 100%;
+        // }
+    }
+}

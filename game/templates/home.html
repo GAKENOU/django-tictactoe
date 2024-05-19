@@ -1,6 +1,95 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div class="container pdlr-2">
-        
+    <div class="instruct_1">
+        <div>
+            <h1 class="font-28">Bienvenue sur le jeu TicTacToe</h1>
+
+            <p>
+                Pour démarrer ce jeu, cliquer sur l'icône 
+                <img src="{% static '/images/icons/tictoe_1.jfif' %}" alt=""> présente dans la 
+                liste des applications à gauche.
+            </p>
+        </div>
+    </div>
+
+    <div class="indiq">
+        <i class="ic-up-arrow ic-warning h-100p"></i>
+    </div>
+
+    <div class="container pdlr-4">
+        <div class="apps">
+            <div class="icon">
+                <img src="{% static '/images/icons/appstore.png' %}" alt="">
+                <span class="app-label">App Store</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/ical_3.png' %}" alt="">
+                <span class="app-label">Calendar</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/iphoto.png' %}" alt="">
+                <span class="app-label">Photos</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/camera.png' %}" alt="">
+                <span class="app-label">Camera</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/clock.webp' %}" alt="">
+                <span class="app-label">Clock</span>
+            </div>
+
+            <div class="icon"></div>
+            <div class="icon">
+                <img src="{% static '/images/icons/home.png' %}" alt="">
+                <span class="app-label">Home</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/chrome.jpg' %}" alt="">
+                <span class="app-label">Chrome</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/gmail.webp' %}" alt="">
+                <span class="app-label">Gmail</span>
+            </div>
+            <div class="icon"></div>
+
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <a href="/tictactoe/howto" class="icon tictoe">
+                <img src="{% static '/images/icons/tictoe_1.jfif' %}" alt="">
+                <span class="app-label">Tic Tac Toe</span>
+            </a>
+            <div class="icon">
+                <img src="{% static '/images/icons/tv.jpg' %}" alt="">
+                <span class="app-label">TV</span>
+            </div>
+            <div class="icon"></div>
+
+            <div class="icon"></div>
+            <div class="icon">
+                <img src="{% static '/images/icons/settings.jpg' %}" alt="">
+                <span class="app-label">Settings</span>
+            </div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon">
+                <img src="{% static '/images/icons/podcast.png' %}" alt="">
+                <span class="app-label">Podcast</span>
+            </div>
+
+            <div class="icon"></div>
+            <div class="icon">
+                <img src="{% static '/images/icons/reminders.png' %}" alt="">
+                <span class="app-label">Reminders</span>
+            </div>
+            <div class="icon">
+                <img src="{% static '/images/icons/tips.jpg' %}" alt="">
+                <span class="app-label">Tips</span>
+            </div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+        </div>
     </div>
 {% endblock content %}

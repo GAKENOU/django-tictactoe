@@ -1,28 +1,51 @@
 .cover {
-    background: url("/static/images/cover01.jpg") no-repeat;
+    background: url("/static/images/cover02.jpg") no-repeat;
     background-position: center;
     background-size: cover;
     height: 100%;
     width: 100%;
+    position: relative;
 
     .glass-overlay {
         background-size: cover;
-        height: 100%;
-        position: relative;
-        width: 100%;
-
-        padding: 3rem 1rem;
-        color: #fff;
-    }
-
-    .glass-overlay::before {
-        background-color: rgba(#0a0a0a, 0.2);
-        content: "";
-        height: 100%;
-        left: 0;
-        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0.6);
         position: absolute;
-        top: 0;
-        width: 100%;
+        inset: 0;
     }
+
+
+    // .glass-overlay::before {
+    //     background-color: rgba(#0a0a0a, 0.2);
+    //     content: "";
+    //     height: 100%;
+    //     left: 0;
+    //     pointer-events: none;
+    //     position: absolute;
+    //     top: 0;
+    //     width: 100%;
+    // }
+
+    .c-modal {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        .content {
+            width: 250px;
+            height: 150px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 5%;
+            padding-bottom: 5%;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+
+    
 }

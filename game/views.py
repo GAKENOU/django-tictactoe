@@ -5,6 +5,14 @@ from django.http import Http404
 def index(request): 
     return render(request, "index.html", {})
 
+# How to
+def howto(request): 
+    return render(request, "howto.html", {})
+
+# HOME
+def home(request):
+    return render(request, "home.html", {})
+
 # GAME
 def game(request):
     # choice = request.GET.get("choice")
