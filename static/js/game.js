@@ -84,6 +84,7 @@ if (element_square) {
         element_square[i].addEventListener('click', function() {
             // Retrieve the value of the data-index attribute
             const index = this.getAttribute('data-index');
+            console.log("index: ",index, " --> gb: ",game_board[index]);
 
             if (game_board[index] == -1) {
                 if (my_turn) {

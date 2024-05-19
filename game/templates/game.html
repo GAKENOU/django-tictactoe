@@ -27,9 +27,20 @@
     <div class="wrapper container">
         <div class="head algn-center mb-3">
             <h1 class="mb-x"><span id="curr-round"></span> / {{ round }} tour{{ round|pluralize }}</h1>
-            <a class="is-hidden" href="javascript:;" onclick="next()" id="to-next">
-                Continue
-            </a>
+
+            <div class="is-hidden mt-3" id="to-next">
+                <a class="ic-flx ic-anim" href="javascript:;" onclick="next()">
+                    <i class="ic-left-double-arrow h-20p ic-wt"></i> &nbsp;
+                    Cliquer pour continuer
+                </a>
+            </div>
+
+            <div class="mt-3 algn-center is-hidden" id="reset-game">
+                <a class="ic-flx ic-anim" href="javascript:;" onclick="reset()">
+                    <i class="ic-left-double-arrow h-20p ic-wt"></i> &nbsp;
+                    Réinitialiser cet épisode
+                </a>
+            </div>
         </div>
 
         <div 
@@ -61,12 +72,6 @@
 
         <div class="mt-3 algn-center">
             Joueur <span id="alert_move"></span>
-        </div>
-
-        <div class="mt-5 algn-center is-hidden" id="reset-game">
-            <a href="javascript:;" onclick="reset()">
-                Réinitialiser le jeu
-            </a>
         </div>
 
         <div class="mt-10 algn-center">

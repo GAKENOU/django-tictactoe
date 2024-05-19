@@ -46,6 +46,26 @@ ul {
     }
 }
 
+@keyframes MoveLeftRight {
+    0%, 100% {
+        left: 0;
+    }
+
+    50% {
+        left: 100px;
+    }
+}
+
+.ic-anim {
+
+
+    i {
+        animation: MoveLeftRight 1s linear infinite;
+        position: absolute;
+        left: 50%;
+    }
+}
+
 .indiq {
     position: absolute;
     width: 400px;
@@ -57,9 +77,7 @@ ul {
         animation: MoveUpDown 1s linear infinite;
         position: absolute;
         left: 38%
-    }
-
-    
+    } 
 }
 
 .game-container {
