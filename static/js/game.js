@@ -46,6 +46,7 @@ win_indices = [
 
 let move_count = 0   // Number of moves done
 let my_turn = true  // Get turn of player
+let next_turn = my_turn
 let al_move = document.getElementById("alert_move")
 
 // Help set active background on player on it's turn to play
@@ -66,6 +67,10 @@ let show_winner_2 = document.getElementById('winner-2')
 let line = document.getElementById('win-line')
 let to_next = document.getElementById('to-next')
 
+let player1_mover = false,
+    player2_mover = false,
+    prev_position = -99
+
 let win_grouped_index = ''
 
 if (score_1 && score_2) {
@@ -77,6 +82,13 @@ if (al_move) {
     al_move.innerHTML = char_choice
 }
 
+let modal = document.getElementById("c-modal")
+let warning_msg = document.getElementById("warning-msg")
+if (modal) {
+    modal.style.display = 'none'
+}
+
+
 // Add the click event listener on every block
 let element_square = document.getElementsByClassName('square')
 if (element_square) {
@@ -84,9 +96,30 @@ if (element_square) {
         element_square[i].addEventListener('click', function() {
             // Retrieve the value of the data-index attribute
             const index = this.getAttribute('data-index');
-            console.log("index: ",index, " --> gb: ",game_board[index]);
+
+            if (!checkIfCanPlay()) {    // checks if can continue placing symbols 
+                // If can't continue, it means each user has placed in total 3 symbols
+                if (prev_position == -99 && game_board[index] != -1) {
+                    // Now users only have the possibility to change position of placed symbols
+                    setPositionToChange(index, my_turn, game_board[index])
+                } else if (prev_position == -99) {
+                    if (warning_msg) {
+                        warning_msg.innerHTML = "Impossible de placer un nouvel symbole ! Merci de cliquer sur un symbole puis replacer."
+                    }
+                    modal.style.display = 'flex'
+                }
+                
+                if (prev_position == -99) {
+                    return;
+                }
+            }
 
             if (game_board[index] == -1) {
+                if (prev_position != -99) {
+                    changePosition(prev_position)
+                    prev_position = -99
+                }
+
                 if (my_turn) {
                     if (al_move) {
                         al_move.innerHTML = (char_choice == 'X')?'O':'X'
@@ -107,6 +140,71 @@ if (element_square) {
     }
 }
 
+/**
+ * Check if each user has placed at least 3 symbol.
+ * This let each user to place only 3 symbols within the square
+ * @returns true If one of the user hasn't placed in total 3 symbol
+ */
+function checkIfCanPlay() {
+    let can_play = false
+    
+    let empty_box_counter = 0
+    for (let i = 0; i < game_board.length; i++) {
+        if (game_board[i] == -1) {
+            empty_box_counter++
+        }
+    }
+    can_play = (empty_box_counter == 3)?false:true
+
+    return can_play
+}
+
+/**
+ * Set the position of symbol to move to another position
+ * @param {*} index 
+ * @param {*} is_payer1_turn 
+ * @param {*} is_payer_1 
+ * @returns 
+ */
+function setPositionToChange(index, is_payer1_turn, is_payer_1) {
+    console.log("is_payer1_turn: ",is_payer1_turn, " >>> ", char_choice);
+    symbol_turn = ''
+    if (is_payer1_turn) {
+        symbol_turn = char_choice
+    } else {
+        symbol_turn = (char_choice == 'X')?'O':'X'
+    }
+
+    if (warning_msg) {
+        warning_msg.innerHTML = "Impossible de déplacer ce symbole ! Merci de passer la main au Joueur "+symbol_turn
+    }
+
+
+    if ((is_payer1_turn && is_payer_1 === 0) || (!is_payer1_turn && is_payer_1 === 1)) {
+        modal.style.display = 'flex'
+        return;
+    }
+
+    const sq_selector = element_square[index].getAttribute('id')
+    let selected_square = document.getElementById(sq_selector)  
+    if (selected_square) {
+        selected_square.classList.add('delete')
+    }
+    prev_position = index
+    
+}
+
+function changePosition(prev_position) {
+    game_board[prev_position] = -1
+    element_square[prev_position].innerHTML = ''
+
+    const sq_selector = element_square[prev_position].getAttribute('id')
+    let selected_square = document.getElementById(sq_selector)  
+    if (selected_square) {
+        selected_square.classList.remove('delete')
+    }
+}
+
 function setPlayerToActive(is_payer_1) {
     if (is_payer_1) {
         if (player_1 && player_2) {
@@ -119,16 +217,6 @@ function setPlayerToActive(is_payer_1) {
             player_2.classList.add('active')
         }
     }
-}
-
-function checkIfCanPlay() {
-    let can_play = false
-    for (let i = 0; i < game_board.length; i++) {
-        if (game_board[i] == -1) {
-            can_play = true
-        }
-    }
-    return can_play
 }
 
 // Make move
@@ -145,19 +233,18 @@ function make_move(index, player) {
             game_board[index] = 0
         } 
         
+        if (next_turn) {
+            my_turn = (move_count % 2 === 0)
+        } else {
+            my_turn = (move_count % 2 !== 0)
+        }
         
-        my_turn = (move_count % 2 === 0)
     }
 
     // Place the move in the game box
     element_square[index].innerHTML = player 
 
-    if (!checkIfCanPlay()) {
-        if (reset_game) {
-            reset_game.style.display = 'block'
-        }
-        return;
-    }
+    
 
     // Check for the winner
     const win = checkifPlayerWins()
@@ -167,7 +254,6 @@ function make_move(index, player) {
         }
 
         if (curr_round < episode) {
-            // curr_round += 1
 
             setTimeout(() => {
                 game_board = [
@@ -177,10 +263,6 @@ function make_move(index, player) {
                 ]
                 to_next.style.display = 'block'
             }, 1500);
-
-            // if (inner_curr_round) {
-            //     inner_curr_round.innerHTML = curr_round
-            // }
         }
     }
 }
@@ -228,8 +310,8 @@ function showFinalWinner() {
 function reset() {
     if (reset_game) {
         reset_game.style.display = 'none'
-        to_next.style.display = 'none'
     }
+    to_next.style.display = 'none'
 
     if (line) {
         line.classList.remove('win-line-'+win_grouped_index)
@@ -241,14 +323,15 @@ function reset() {
         -1, -1, -1
     ]
     move_count = 0
-    my_turn = true
+    my_turn = next_turn
 
     // if (al_move) {
     //     al_move.style.display = 'inline'
     // }
     if (al_move) {
-        al_move.innerHTML = char_choice
-        setPlayerToActive(true)
+        let next_char = (char_choice == 'X')?'O':'X'
+        al_move.innerHTML = (next_turn)?char_choice:next_char
+        setPlayerToActive(next_turn)
     }
 
     for (let i = 0; i < element_square.length; i++) {
@@ -266,13 +349,14 @@ const checkIsWin = (win_index) => {
         if (game_board[win_index[0]] == 1) {
             // >>>>>>>  Player 1 wins
             score_player_1++
-
+            next_turn = true
             if (score_1 && score_2) {
                 score_1.innerHTML = score_player_1
             }
         } else if (game_board[win_index[0]] == 0) {
             // >>>>>>>  Player 2 wins
             score_player_2++
+            next_turn = false
             if (score_1 && score_2) {
                 score_2.innerHTML = score_player_2
             }
@@ -307,67 +391,6 @@ function drawWinnerLine(win_grouped_index) {
     if (line) {
         line.classList.add('win-line-'+win_grouped_index)
     }
-}
-
-// Main function which handles the websocket connection
-function connect() {
-    game_socket.onopen = function open() {
-
-        // On websocket open, send the START event
-        game_socket.send(JSON.stringify({
-            "event": "START",
-            "message": ""
-        }))
-    }
-
-    game_socket.onclose = function(e) {
-        setTimeout(() => {
-            connect()
-        }, 1000);
-    }
-
-    // Sennding the info about the rooom
-    game_socket.onmessage = function(e) {
-        // On getting the messgae from the server
-        // do the appropriate steps on each event
-        let data = JSON.parse.parse(e.data)
-        data = data["payload"]
-
-        let message  = data["message"]
-        let event  = data["event"]
-
-        switch (event){
-            case "START":
-                reset()
-                break;
-            case "END":
-                alert(message)
-                reset()
-                break;
-            case "MOVE":
-                if (message["player"] != char_choice) {
-                    make_move(message["index"], message["player"])
-                    my_turn = true
-
-                    if (al_move) {
-                        al_move.style.display = 'inline'
-                    }
-                }
-                break;
-            default:
-                console.log("No event");
-        }
-    }
-
-    if (game_socket.readyState == WebSocket.OPEN) {
-        game_socket.onopen()
-    }
-}
-
-let modal = document.getElementById("c-modal")
-let warning_msg = document.getElementById("warning-msg")
-if (modal) {
-    modal.style.display = 'none'
 }
 
 

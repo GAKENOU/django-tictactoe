@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container pdlr-2">
+    <div class="container ctn-h scroll-bar pdlr-2">
         <div class="pdlr-4">
             <h2 class="font-24 mb-2">Comment ce jeu fonctionne  ?</h2>
             <p class="font-18 mt-x mb-2">
@@ -15,7 +15,7 @@
                 <h3 class="font-18 mb-2">Choix de symbole</h3>
                 <p class="mt-x mb-2">
                     Seul le Joueur 1 a la possibilité de choisir un symbole (X ou O). Si le Joueur 1 
-                    choist le symbole X (ou O), alors le Joueur 2 se voit attribué automatiquemen le symbole 
+                    choisit le symbole X (ou O), alors le Joueur 2 se voit attribué automatiquement le symbole 
                     O ( ou X selon le choix du Joueur 1). 
                 </p>
             </p>
@@ -33,6 +33,17 @@
                 <h3 class="font-18 mb-2">Quel joueur place t-il son symbole ?</h3>
                 <p class="mt-x mb-2">
                     Le rectangle en surbrillance marque le joueur qui doit placer son symbole.
+                </p>
+            </p>
+
+            <p class="font-18 mt-x mb-2">
+                <h3 class="font-18 mb-2">Combien de symbole un joueur peut-il placer ?</h3>
+                <p class="mt-x mb-2">
+                    Il est permis à chaque joueur de placer trois (03) symboles au total. 
+                    Une fois que cette limite sera atteinte par les deux joueurs, ils pourront changer la position 
+                    d'un symbole. Le joueur ayant la main doit joueur son tour en cliquant sur son symbole, 
+                    puis en le replaçant dans une position non occupée. Par conséquent, les deux joueurs devront 
+                    modifier la position de leurs symboles respectifs jusqu'à ce qu'un gagnant de l'épisode soit annoncé.
                 </p>
             </p>
 

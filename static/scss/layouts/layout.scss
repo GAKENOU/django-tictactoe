@@ -99,6 +99,11 @@ ul {
     color: #fff;
     width: 100%;
 
+    &.ctn-h {
+        height: 80%;
+        overflow: auto;
+    }
+
     .select-input {
         width: 100%;
     }
@@ -266,6 +271,7 @@ ul {
         }
         
         .square{
+            cursor: pointer;
             background: #fff;
             width: 104px;
             height: 104px;
@@ -280,6 +286,11 @@ ul {
 
             &:after {
                 transform: scale(1.5); /* Increase font size by 1.5x */
+            }
+
+            &.delete {
+                background-color: #380000!important;
+                color: #fff!important;
             }
         }
     }
@@ -383,3 +394,21 @@ ul {
         // }
     }
 }
+
+.scroll-bar {
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(240,172,141,1);
+        background-color: #F0F7FD;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: #F0F7FD;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #FFF;
+	    background-image: -webkit-linear-gradient(90deg,rgb(240,172,141) 0%,rgba(240,172,141,1) 25%, transparent 100%,rgba(240,172,141,1) 75%, transparent)
+    }
+}
+

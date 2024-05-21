@@ -762,6 +762,10 @@ ul {
   color: #fff;
   width: 100%;
 }
+.container.ctn-h {
+  height: 80%;
+  overflow: auto;
+}
 .container .select-input {
   width: 100%;
 }
@@ -899,6 +903,7 @@ ul {
   transition: all 1.5s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
 }
 .container.wrapper .square {
+  cursor: pointer;
   background: #fff;
   width: 104px;
   height: 104px;
@@ -913,6 +918,10 @@ ul {
 }
 .container.wrapper .square:after {
   transform: scale(1.5); /* Increase font size by 1.5x */
+}
+.container.wrapper .square.delete {
+  background-color: #380000 !important;
+  color: #fff !important;
 }
 
 .winner_1, .winner_2 {
@@ -998,6 +1007,19 @@ ul {
   left: 0;
 }
 
+.scroll-bar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(240, 172, 141);
+  background-color: #F0F7FD;
+}
+.scroll-bar::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F0F7FD;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #FFF;
+  background-image: -webkit-linear-gradient(90deg, rgb(240, 172, 141) 0%, rgb(240, 172, 141) 25%, transparent 100%, rgb(240, 172, 141) 75%, transparent);
+}
+
 .bezel {
   border-radius: 55.33px;
   height: 700px;
@@ -1073,7 +1095,7 @@ ul {
 }
 .cover .c-modal .content {
   width: 250px;
-  height: 150px;
+  min-height: 150px;
   background-color: #fff;
   text-align: center;
   padding-top: 5%;

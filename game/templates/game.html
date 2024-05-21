@@ -34,13 +34,6 @@
                     Cliquer pour continuer
                 </a>
             </div>
-
-            <div class="mt-3 algn-center is-hidden" id="reset-game">
-                <a class="ic-flx ic-anim" href="javascript:;" onclick="reset()">
-                    <i class="ic-left-double-arrow h-20p ic-wt"></i> &nbsp;
-                    Réinitialiser cet épisode
-                </a>
-            </div>
         </div>
 
         <div 
@@ -50,21 +43,21 @@
             round="{{ round }}"
         >
             <div class="square-row">
-                <div class="square" data-index="0"></div>
-                <div class="square" data-index="1"></div>
-                <div class="square" data-index="2"></div>
+                <div class="square" id="sq0" data-index="0"></div>
+                <div class="square" id="sq1" data-index="1"></div>
+                <div class="square" id="sq2" data-index="2"></div>
             </div>
             
             <div class="square-row">
-                <div class="square" data-index="3" disabled></div>
-                <div class="square" data-index="4"></div>
-                <div class="square" data-index="5"></div>
+                <div class="square" id="sq3" data-index="3"></div>
+                <div class="square" id="sq4" data-index="4"></div>
+                <div class="square" id="sq5" data-index="5"></div>
             </div>
             
             <div class="square-row">
-                <div class="square" data-index="6"></div>
-                <div class="square" data-index="7"></div>
-                <div class="square" data-index="8"></div>
+                <div class="square" id="sq6" data-index="6"></div>
+                <div class="square" id="sq7" data-index="7"></div>
+                <div class="square" id="sq8" data-index="8"></div>
             </div>
 
             <div class="win-line" id="win-line"></div>
@@ -76,6 +69,23 @@
 
         <div class="mt-10 algn-center">
             <a href="/tictactoe/game" class="text-neutral">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <div class="c-modal" id="c-modal">
+        <div class="content">
+            <i class="ic-alert ic-warning h-100p"></i>
+
+            <div 
+                class="text-warning font-wgh-600" 
+                id="warning-msg"
+            ></div>
+            
+            <div class="mt-3">
+                <a href="javascript:;" onclick="closeModal()" class="text-danger">
+                    Fermer
+                </a>
+            </div>
         </div>
     </div>
 {% endblock content %}
