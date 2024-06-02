@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from game.views import redirect_to_base_path
 # from game.views import index
 # from game.views import game
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", redirect_to_base_path),            # Redirige vers le path de base /tictactoe
     path("tictactoe/", include("game.urls")),
 ]

@@ -1,3 +1,6 @@
 Django==5.0.4
 channels==4.1.0
 channels-redis==4.2.0
+livereload
+django-livereload-server
+django-crispy-forms==2.1
